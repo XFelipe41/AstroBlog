@@ -1,16 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
-import { siteConfig } from '../config/site-config';
-import MainLayout from '../layouts/MainLayout.astro';
-import TypedBlogPost from 'src/components/TypedBlogPost.astro';
+import { getCollection } from "astro:content";
+import { siteConfig } from "../config/site-config";
+import MainLayout from "../layouts/MainLayout.astro";
+import TypedBlogPost from "src/components/TypedBlogPost.astro";
 
 const blogPosts = await getCollection(
-  'blog',
+  "blog",
   (post) => post.data.isDraft === false
 );
 ---
 
-<MainLayout title="Fernando's Blog">
+<MainLayout title="YO GI HO Blog IN ENGLISH">
   <!-- component -->
   <section class="bg-white dark:bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
