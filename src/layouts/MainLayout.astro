@@ -20,6 +20,9 @@ const { title } = Astro.props;
       title="YO GI HO Blog IN ENGLISH"
       href={`${Astro.site}rss.xml`}
     />
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+    ></script>
+
     <title>{title}</title>
 
     <ViewTransitions />
@@ -28,5 +31,22 @@ const { title } = Astro.props;
     <main class="mb-10 max-w-5xl m-auto px-5 py-2">
       <slot />
     </main>
+    <script>
+      // Initialize Netlify Identity widget
+      declare global {
+        interface Window {
+          netlifyIdentity: any;
+        }
+      }
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user: any) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
